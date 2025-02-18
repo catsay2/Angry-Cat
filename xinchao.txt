@@ -94,8 +94,8 @@ local v7 = CreateObject("ImageLabel", {
     Parent = v6,
     BackgroundTransparency = 1,
     Image = "rbxassetid://133117911388379",
-    Position = UDim2.new(0, 15, 0, 10),
-    Size = UDim2.new(0, 50, 0, 50)
+    Position = UDim2.new(0, 0, 0, 0),
+    Size = UDim2.new(0, 0, 0, 0)
 });
 v4(25, v7);
 local v8 = CreateObject("TextLabel", {
