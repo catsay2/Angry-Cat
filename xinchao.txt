@@ -1,4 +1,3 @@
-
 local v14 = loadstring(game:HttpGet("https://raw.githubusercontent.com/obfalchx/testfluent/refs/heads/main/FluentTrau"))();
 local v15 = v14:CreateWindow({
     Title = "Apple Cat Hub",
@@ -2492,7 +2491,7 @@ spawn(function()
     end
 end);
 local v50 = v16.Main:AddToggle("ToggleMobAura", {
-    Title = "Đấm Quái Gần",
+    Title = "Farm Quái Ở Gần",
     Description = "",
     Default = false
 });
@@ -2538,7 +2537,7 @@ spawn(function()
     end
 end);
 local v51 = v16.Main:AddToggle("ToggleCastleRaid", {
-    Title = "Đấm Hải Tặc",
+    Title = "Farm Hải Tặc Ở Pháo Đài",
     Description = "",
     Default = false
 });
@@ -2784,7 +2783,7 @@ end);
 if Sea3 then
     local v484 = v16.Main:AddSection("Xương");
     local v485 = v16.Main:AddParagraph({
-        Title = "Xương Trạng Thái",
+        Title = "Xương Bạn Có..",
         Content = ""
     });
     spawn(function()
@@ -2796,7 +2795,7 @@ if Sea3 then
         end);
     end);
     local v486 = v16.Main:AddToggle("ToggleBone", {
-        Title = "Auto Farm Bone",
+        Title = "Farm Xương",
         Description = "",
         Default = false
     });
@@ -3034,7 +3033,7 @@ if Sea3 then
         end
     end);
     local v494 = v16.Main:AddToggle("ToggleDoughKing", {
-        Title = "Đấm Vua Bột",
+        Title = "Farm Vua Bột",
         Description = "",
         Default = false
     });
@@ -3204,7 +3203,7 @@ v61:OnChanged(function(v253)
     _G.SelectBoss = v253;
 end);
 local v62 = v16.Main:AddToggle("ToggleAutoFarmBoss", {
-    Title = "Đấm Trùm",
+    Title = "Farm Boss",
     Description = "",
     Default = false
 });
@@ -3925,7 +3924,7 @@ if Sea3 then
         end
     });
     local v522 = v16.Sea:AddToggle("ToggleTerrorshark", {
-        Title = "Đấm Cá Mập",
+        Title = "Farm Cá Mập",
         Description = "",
         Default = false
     });
@@ -3963,7 +3962,7 @@ if Sea3 then
         end
     end);
     local v523 = v16.Sea:AddToggle("TogglePiranha", {
-        Title = "Đấm Piranha",
+        Title = "Farm Piranha",
         Description = "",
         Default = false
     });
@@ -4001,7 +4000,7 @@ if Sea3 then
         end
     end);
     local v524 = v16.Sea:AddToggle("ToggleShark", {
-        Title = "Đấm Cá Con",
+        Title = "Farm Cá Con",
         Description = "",
         Default = false
     });
@@ -4043,7 +4042,7 @@ if Sea3 then
         end
     end);
     local v525 = v16.Sea:AddToggle("ToggleFishCrew", {
-        Title = "Đấm Tàu Cá",
+        Title = "Farm Tàu Cá",
         Description = "",
         Default = false
     });
@@ -4085,7 +4084,7 @@ if Sea3 then
         end
     end);
     local v526 = v16.Sea:AddToggle("ToggleShip", {
-        Title = "Đấm Tàu",
+        Title = "Farm Tàu",
         Description = "",
         Default = false
     });
@@ -4128,7 +4127,7 @@ if Sea3 then
         end
     end);
     local v527 = v16.Sea:AddToggle("ToggleGhostShip", {
-        Title = "Đấm Tàu Ma",
+        Title = "Farm Tàu Ma",
         Description = "",
         Default = false
     });
@@ -4266,7 +4265,7 @@ if Sea3 then
         end
     end);
     local v530 = v16.Main:AddToggle("ToggleElite", {
-        Title = "Đấm Elite",
+        Title = "Farm Elite",
         Description = "",
         Default = false
     });
@@ -5751,7 +5750,7 @@ spawn(function()
 end);
 if Sea2 then
     local v537 = v16.ITM:AddToggle("ToggleFactory", {
-        Title = "Đấm Nhà Máy",
+        Title = "Farm Nhà Máy",
         Description = "",
         Default = false
     });
@@ -5796,7 +5795,7 @@ if Sea2 then
     end);
 end
 local v83 = v16.ITM:AddToggle("ToggleAutoFarmSwan", {
-    Title = "Đấm Swan",
+    Title = "Farm Swan",
     Description = "",
     Default = false
 });
@@ -6304,7 +6303,7 @@ spawn(function()
     end
 end);
 local v107 = v16.Stats:AddToggle("ToggleMelee", {
-    Title = "Nâng Đấm",
+    Title = "Nâng Võ",
     Description = "",
     Default = false
 });
@@ -7481,7 +7480,7 @@ spawn(function()
     end
 end);
 local v140 = v16.Raid:AddToggle("ToggleNextIsland", {
-    Title = "Đấm Quái Raid+Bay Đến Đảo",
+    Title = "Farm Quái Raid+Bay Đến Đảo",
     Description = "",
     Default = false
 });
@@ -7676,7 +7675,7 @@ elseif Sea3 then
 end
 local v56 = v16.Raid:AddSection("Tập Kích Law");
 local v143 = v16.Raid:AddToggle("ToggleLaw", {
-    Title = "Mua Chip Và Đấm Law",
+    Title = "Mua Chip Và Farm Law",
     Description = "",
     Default = false
 });
@@ -7909,7 +7908,7 @@ spawn(function()
     end);
 end);
 local v146 = v16.Race:AddToggle("ToggleKillTrial", {
-    Title = "Đấm Người Chơi Trong Trial",
+    Title = "Farm Người Chơi Trong Trial",
     Description = "",
     Default = false
 });
@@ -7993,7 +7992,7 @@ v16.Shop:AddButton({
     end
 });
 v16.Shop:AddButton({
-    Title = "Haki Đấm",
+    Title = "Haki Vũ Trang",
     Description = "",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso");
@@ -8939,7 +8938,7 @@ spawn(function()
     end
 end);
 local v175 = v16.Sea:AddToggle("ToggleKillAura", {
-    Title = "Đấm Golems Aura",
+    Title = "Farm Golems Aura",
     Description = "",
     Default = false
 });
@@ -9014,7 +9013,7 @@ spawn(function()
     end
 end);
 v14:Notify({
-    Title = "Aqua Hub",
+    Title = "Apple Cat Hub",
     Content = "By AngryCat",
     Duration = 10
 });
