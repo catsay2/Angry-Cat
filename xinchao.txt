@@ -1,7 +1,7 @@
 local v14 = loadstring(game:HttpGet("https://raw.githubusercontent.com/obfalchx/testfluent/refs/heads/main/FluentTrau"))();
 local v15 = v14:CreateWindow({
     Title = "Aqua Hub",
-    SubTitle = "[Beta]",
+    SubTitle = "Turbo Lite",
     TabWidth = 160,
     Theme = "Aqua",
     Acrylic = false,
@@ -2366,10 +2366,10 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy();
 end
 v16.Home:AddButton({
-    Title = "Youtube",
-    Description = "Tại Đây",
+    Title = "Discord",
+    Description = "TurboLite",
     Callback = function()
-        setclipboard("https://youtube.com/@thanhdzso1");
+        setclipboard("https://discord.com/invite/3xbHPtsQgC");
     end
 });
 _G.FastAttackStrix_Mode = "Super Fast Attack";
@@ -2431,7 +2431,7 @@ task.spawn(function()
     end
 end);
 local v49 = v16.Main:AddToggle("ToggleLevel", {
-    Title = "Farm Lv",
+    Title = "Farm Level",
     Description = "",
     Default = false
 });
@@ -2499,7 +2499,7 @@ v50:OnChanged(function(v238)
     _G.AutoNear = v238;
     if (v238 == false) then
         wait();
-        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+       Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
         wait();
     end
 end);
@@ -4405,7 +4405,7 @@ spawn(function()
     end
 end);
 local v67 = v16.Sea:AddToggle("ToggleTweenGear", {
-    Title = "Bay Đến Bánh Răng",
+    Title = "Bay Đến Gear",
     Description = "",
     Default = false
 });
@@ -8439,7 +8439,7 @@ v16.Misc:AddButton({
     end
 });
 local v153 = v16.Misc:AddToggle("ToggleAntiBand", {
-    Title = "Chống Band",
+    Title = "Anti Ban",
     Description = "",
     Default = true
 });
@@ -8471,7 +8471,7 @@ v16.Sea:AddButton({
     end
 });
 local v155 = v16.Sea:AddToggle("ToggleTPFrozenDimension", {
-    Title = "Bay Đến Đảo Leviathan",
+    Title = "Bay Đến Đảo Frozen Dimension",
     Description = "",
     Default = false
 });
@@ -8741,7 +8741,7 @@ local v166 = v16.Sea:AddParagraph({
     Content = ""
 });
 local v167 = v16.Sea:AddToggle("ToggleTrialTeleport", {
-    Title = "Bay Đến Cửa Trial Tộc Draco",
+    Title = "Bay Đến Chỗ Trial Tộc Draco",
     Description = "",
     Default = false
 });
@@ -8804,7 +8804,7 @@ spawn(function()
     end
 end);
 local v171 = v16.Sea:AddToggle("ToggleDefendVolcano", {
-    Title = "Phòng Thủ",
+    Title = "Lấp Lỗ",
     Description = "",
     Default = false
 });
