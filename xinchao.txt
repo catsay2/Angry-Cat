@@ -3147,7 +3147,7 @@ if Sea2 then
         end
     end);
 end
-local v60 = v16.Main:AddSection("Trùm");
+local v60 = v16.Main:AddSection("Boss");
 if Sea1 then
     tableBoss = {
         "The Gorilla King",
@@ -3192,7 +3192,7 @@ elseif Sea3 then
     };
 end
 local v61 = v16.Main:AddDropdown("DropdownBoss", {
-    Title = "Chọn Trùm",
+    Title = "Chọn Boss",
     Description = "",
     Values = tableBoss,
     Multi = false,
@@ -3273,7 +3273,7 @@ elseif Sea3 then
     };
 end
 local v64 = v16.Main:AddDropdown("DropdownMaterial", {
-    Title = "Chọn Nguyên Liệu Để Farm",
+    Title = "Chọn Nguyên Liệu",
     Description = "",
     Values = MaterialList,
     Multi = false,
@@ -8938,7 +8938,7 @@ spawn(function()
     end
 end);
 local v175 = v16.Sea:AddToggle("ToggleKillAura", {
-    Title = "Farm Golems Aura",
+    Title = "Kill Golems Aura",
     Description = "",
     Default = false
 });
