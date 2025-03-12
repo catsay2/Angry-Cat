@@ -1,7 +1,7 @@
-local v14 = loadstring(game:HttpGet("https://raw.githubusercontent.com/obfalchx/testfluent/refs/heads/main/FluentTrau"))();
+local v14 = local UiMakeLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Msunehub/Uilm/refs/heads/main/UiMat1.lua"))();
 local v15 = v14:CreateWindow({
     Title = "Aqua Hub",
-    SubTitle = "Turbo Lite",
+    SubTitle = "By AngryCat",
     TabWidth = 160,
     Theme = "Aqua",
     Acrylic = false,
@@ -3564,7 +3564,7 @@ if Sea3 then
             if not v513 then
                 v14:Notify({
                     Title = "Aqua Hub",
-                    Content = "Đảo Dung Nham Tìm Thấy",
+                    Content = "Đã Đến Prehistoric Island",
                     Duration = 10
                 });
                 v513 = true;
@@ -3658,7 +3658,7 @@ if Sea3 then
             if not v513 then
                 v14:Notify({
                     Title = "Aqua Hub",
-                    Content = "Đảo Bí Ẩn Tìm Thấy",
+                    Content = "Đã Đến Mirage Island",
                     Duration = 10
                 });
                 v513 = true;
@@ -3668,7 +3668,7 @@ if Sea3 then
     end);
     local v515 = v16.Sea:AddToggle("AutoFindFrozen", {
         Title = "Tìm Đảo Leviathan",
-        Description = "Cần 5 Người Không Idk",
+        Description = "Cần 5 Người",
         Default = false
     });
     v17.AutoFindFrozen:SetValue(false);
@@ -3752,7 +3752,7 @@ if Sea3 then
             if not v513 then
                 v14:Notify({
                     Title = "Aqua Hub",
-                    Content = "Đảo Leviathan Tìm Thấy",
+                    Content = "Đã Đến FrozenDimension",
                     Duration = 10
                 });
                 v513 = true;
@@ -8737,7 +8737,7 @@ v165:OnChanged(function(v397)
     end
 end);
 local v166 = v16.Sea:AddParagraph({
-    Title = "Hoàn Thành Ải Draco V4 (Sớm Ra)",
+    Title = "Hoàn Thành Ải Draco V4 (Chờ đến khi ra mắt)",
     Content = ""
 });
 local v167 = v16.Sea:AddToggle("ToggleTrialTeleport", {
@@ -9014,6 +9014,14 @@ spawn(function()
 end);
 v14:Notify({
     Title = "Aqua Hub",
-    Content = "By AngryCat",
+    Content = "By Angry Cat",
     Duration = 10
 });
+------- SOUND
+
+local startupSound = Instance.new("Sound")
+    startupSound.SoundId = "rbxassetid://6667923288"
+    startupSound.Volume = 5
+    startupSound.Looped = false
+    startupSound.Parent = game.CoreGui
+    startupSound:Play()
