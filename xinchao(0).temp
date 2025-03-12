@@ -1,4 +1,4 @@
-local v14 =local UiMakeLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Msunehub/Uilm/refs/heads/main/UiMat1.lua"))()
+local UiMakeLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Msunehub/Uilm/refs/heads/main/UiMat1.lua"))()
 local Notify = UiMakeLib:MakeNotify({
 	["Title"] = "AngryCat Hub",
 	["Description"] = "Notification",
@@ -78,7 +78,8 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
     wait();
     game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
 end);
-
+
+
 
 Sea1 = false;
 Sea2 = false;
