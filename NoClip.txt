@@ -1,0 +1,26 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+-- Hàm bật noclip cho toàn bộ phần tử của nhân vật
+local function enableNoclip(character)
+	RunService.Stepped:Connect(function()
+		if character and character.Parent then
+			for _, part in pairs(character:GetChildren()) do
+				if part:IsA("BasePart") then
+					part.CanCollide = false
+				end
+			end
+		end
+	end)
+end
+
+-- Kích hoạt noclip cho nhân vật hiện tại
+if LocalPlayer.Character then
+	enableNoclip(LocalPlayer.Character)
+end
+
+-- Kích hoạt noclip lại khi respawn
+LocalPlayer.CharacterAdded:Connect(function(char)
+	enableNoclip(char)
+end)
