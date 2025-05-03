@@ -18,14 +18,14 @@ screenGui.Parent = game:GetService("CoreGui")
 
 local button = Instance.new("TextButton")
 button.Name = "NPC Lock: ON/OFF"
-button.Size = UDim2.new(0, 150, 0, 50)
+button.Size = UDim2.new(0, 40, 0, 40)
 button.Position = UDim2.new(0.5, -75, 0.9, -25)
 button.BackgroundColor3 = Color3.new(0, 0, 0)
 button.TextColor3 = Color3.new(1, 1, 1)
 button.Text = "NPC Lock: OFF"
 button.Font = Enum.Font.Fantasy
 button.TextScaled = true
-button.TextSize = 20
+button.TextSize = 5
 button.Parent = screenGui
 
 -- Bo góc
