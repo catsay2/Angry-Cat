@@ -1,38 +1,152 @@
--- Tạo biến theo dõi trạng thái No Clip
-local noClipState = false
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
 
--- Lấy đối tượng nhân vật và nút GUI
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local noClipButton = script.Parent.NoClipButton -- Thay thế bằng nút No Clip trong GUI của bạn
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Hàm bật chế độ No Clip
-local function enableNoClip()
-    for _, part in ipairs(character:GetChildren()) do
-        if part:IsA("BasePart") then
-            part.CanCollide = false -- Tắt va chạm cho các phần của nhân vật
-        end
-    end
+local noclipEnabled = false
+local noclipConnection = nil
+
+-- Hàm bật noclip
+local function enableNoclip(character)
+	if noclipConnection then
+		noclipConnection:Disconnect()
+	end
+
+	noclipConnection = RunService.Stepped:Connect(function()
+		if character and character.Parent then
+			for _, part in pairs(character:GetDescendants()) do
+				if part:IsA("BasePart") and not part.Anchored then
+					part.CanCollide = false
+				end
+			end
+		end
+	end)
+
+	noclipEnabled = true
 end
 
--- Hàm tắt chế độ No Clip
-local function disableNoClip()
-    for _, part in ipairs(character:GetChildren()) do
-        if part:IsA("BasePart") then
-            part.CanCollide = true -- Bật va chạm lại cho các phần của nhân vật
-        end
-    end
+-- Hàm tắt noclip
+local function disableNoclip(character)
+	if noclipConnection then
+		noclipConnection:Disconnect()
+		noclipConnection = nil
+	end
+
+	if character and character.Parent then
+		for _, part in pairs(character:GetDescendants()) do
+			if part:IsA("BasePart") then
+				part.CanCollide = true
+			end
+		end
+	end
+
+	noclipEnabled = false
 end
 
--- Logic cho việc bật/tắt No Clip khi nhấn nút
-noClipButton.MouseButton1Click:Connect(function()
-    noClipState = not noClipState -- Đảo ngược trạng thái No Clip
-    
-    if noClipState then
-        enableNoClip() -- Bật No Clip
-        noClipButton.Text = "No Clip : On" -- Cập nhật lại văn bản trên nút
-    else
-        disableNoClip() -- Tắt No Clip
-        noClipButton.Text = "No Clip : Off" -- Cập nhật lại văn bản trên nút
-    end
+-- Tạo GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "NoclipGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = PlayerGui
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 40, 0, 40) -- Hình vuông 40x40
+button.Position = UDim2.new(0, 10, 0, 10)
+button.Text = "OFF"
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.TextColor3 = Color3.new(1, 1, 1)
+button.Font = Enum.Font.SourceSansBold
+button.TextScaled = true
+button.Parent = screenGui
+
+-- Viền trắng
+local stroke = Instance.new("UIStroke")
+stroke.Color = Color3.fromRGB(255, 255, 255)
+stroke.Thickness = 2
+stroke.Parent = button
+
+-- Bo góc
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 8)
+corner.Parent = button
+
+-- Hiệu ứng cầu vồng cho chữ
+RunService.RenderStepped:Connect(function()
+	local t = tick() * 2
+	local r = math.sin(t) * 0.5 + 0.5
+	local g = math.sin(t + 2) * 0.5 + 0.5
+	local b = math.sin(t + 4) * 0.5 + 0.5
+	button.TextColor3 = Color3.new(r, g, b)
 end)
+
+-- Kéo GUI bằng chuột hoặc cảm ứng
+local dragging = false
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	button.Position = UDim2.new(
+		startPos.X.Scale,
+		startPos.X.Offset + delta.X,
+		startPos.Y.Scale,
+		startPos.Y.Offset + delta.Y
+	)
+end
+
+button.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = button.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+button.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+-- Bấm nút đổi trạng thái
+button.MouseButton1Click:Connect(function()
+	local character = LocalPlayer.Character
+	if character then
+		if noclipEnabled then
+			disableNoclip(character)
+			button.Text = "OFF"
+		else
+			enableNoclip(character)
+			button.Text = "ON"
+		end
+	end
+end)
+
+-- Khi nhân vật respawn
+LocalPlayer.CharacterAdded:Connect(function(char)
+	if noclipEnabled then
+		enableNoclip(char)
+	else
+		disableNoclip(char)
+	end
+end)
+
+-- Thiết lập trạng thái ban đầu
+if LocalPlayer.Character then
+	disableNoclip(LocalPlayer.Character)
+end
