@@ -1,29 +1,38 @@
--- NoClip Script with ON/OFF Toggle Support
--- Author: AngryCat | getgenv().NoClipEnabled toggle support
+-- Tạo biến theo dõi trạng thái No Clip
+local noClipState = false
 
--- Khởi tạo nếu chưa có
-getgenv().NoClipEnabled = getgenv().NoClipEnabled or false
+-- Lấy đối tượng nhân vật và nút GUI
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local noClipButton = script.Parent.NoClipButton -- Thay thế bằng nút No Clip trong GUI của bạn
 
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local player = Players.LocalPlayer
-
--- Dọn kết nối cũ nếu có
-if getgenv().NoClipConnection then
-    getgenv().NoClipConnection:Disconnect()
-    getgenv().NoClipConnection = nil
-end
-
--- Thiết lập kết nối mới
-getgenv().NoClipConnection = RunService.Stepped:Connect(function()
-    if getgenv().NoClipEnabled and player.Character then
-        for _, part in ipairs(player.Character:GetDescendants()) do
-            if part:IsA("BasePart") and part.CanCollide == true then
-                part.CanCollide = false
-            end
+-- Hàm bật chế độ No Clip
+local function enableNoClip()
+    for _, part in ipairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = false -- Tắt va chạm cho các phần của nhân vật
         end
     end
-end)
+end
 
--- Tùy chọn: Thông báo trạng thái trong Output
-print("NoClip script loaded. Current status: " .. (getgenv().NoClipEnabled and "ON" or "OFF"))
+-- Hàm tắt chế độ No Clip
+local function disableNoClip()
+    for _, part in ipairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = true -- Bật va chạm lại cho các phần của nhân vật
+        end
+    end
+end
+
+-- Logic cho việc bật/tắt No Clip khi nhấn nút
+noClipButton.MouseButton1Click:Connect(function()
+    noClipState = not noClipState -- Đảo ngược trạng thái No Clip
+    
+    if noClipState then
+        enableNoClip() -- Bật No Clip
+        noClipButton.Text = "No Clip : On" -- Cập nhật lại văn bản trên nút
+    else
+        disableNoClip() -- Tắt No Clip
+        noClipButton.Text = "No Clip : Off" -- Cập nhật lại văn bản trên nút
+    end
+end)
