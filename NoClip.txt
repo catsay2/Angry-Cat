@@ -1,26 +1,29 @@
+-- NoClip Script with ON/OFF Toggle Support
+-- Author: AngryCat | getgenv().NoClipEnabled toggle support
+
+-- Khởi tạo nếu chưa có
+getgenv().NoClipEnabled = getgenv().NoClipEnabled or false
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
-local LocalPlayer = Players.LocalPlayer
+local player = Players.LocalPlayer
 
--- Hàm bật noclip cho toàn bộ phần tử của nhân vật
-local function enableNoclip(character)
-	RunService.Stepped:Connect(function()
-		if character and character.Parent then
-			for _, part in pairs(character:GetChildren()) do
-				if part:IsA("BasePart") then
-					part.CanCollide = false
-				end
-			end
-		end
-	end)
+-- Dọn kết nối cũ nếu có
+if getgenv().NoClipConnection then
+    getgenv().NoClipConnection:Disconnect()
+    getgenv().NoClipConnection = nil
 end
 
--- Kích hoạt noclip cho nhân vật hiện tại
-if LocalPlayer.Character then
-	enableNoclip(LocalPlayer.Character)
-end
-
--- Kích hoạt noclip lại khi respawn
-LocalPlayer.CharacterAdded:Connect(function(char)
-	enableNoclip(char)
+-- Thiết lập kết nối mới
+getgenv().NoClipConnection = RunService.Stepped:Connect(function()
+    if getgenv().NoClipEnabled and player.Character then
+        for _, part in ipairs(player.Character:GetDescendants()) do
+            if part:IsA("BasePart") and part.CanCollide == true then
+                part.CanCollide = false
+            end
+        end
+    end
 end)
+
+-- Tùy chọn: Thông báo trạng thái trong Output
+print("NoClip script loaded. Current status: " .. (getgenv().NoClipEnabled and "ON" or "OFF"))
